@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Created by: Nick Borushko
+on January 18, 2018
+-->
+<html>
+<body>
+
+<h1>My Second Google Map</h1>
+
+<select onchange="getMap(this)">
+  <option value="florida">Florida</option>
+  <option value="paris">Paris</option>
+  <option value="canada">Canada</option>
+  <option value="rome">Rome</option>
+</select>
+<div id="map" style="width:400px;height:400px;background:green"></div>
+
+
+
+<script>
+  function myMap(lat, long) {
+    if(lat == null){
+      lat = 39.9582;
+    }
+    if(long == null){
+      long = -86.01708;
+    }
+    var mapCanvas = document.getElementById("map");
+    var mapOptions = {
+      center: new google.maps.LatLng(lat, long), zoom: 10
+    };
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+  }
+  function getMap(e){
+    if(e.value == "florida"){
+      myMap(28.5188,-81.44426);
+    }
+    else if(e.value == "paris"){
+      myMap(48.864716, 2.349014);
+    }
+    else if(e.value == "canada"){
+      myMap(58.02716,-105.3809);
+    }
+    else if(e.value == "rome"){
+      myMap(41.890251, 12.492373);
+    }
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBERgIeKnGKVkBWYZcKoKjuuYvXAl8IkLg&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+</body>
+</html>
